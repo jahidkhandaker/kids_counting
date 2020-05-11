@@ -69,10 +69,10 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     setState(() {
                       //angle = 45 / 360 * 2 * pi;
                     });
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                          return ButtonController();
-                        }));
+//                    Navigator.push(context,
+//                        MaterialPageRoute(builder: (context) {
+//                      return ButtonController();
+//                    }));
                   },
                 ),
               ],

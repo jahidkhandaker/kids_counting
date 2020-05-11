@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:kidscounting/screens/HomePage.dart';
 import 'package:kidscounting/screens/SplashScreen.dart';
 
 void main() => runApp(MyApp());
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData.light(),
         home: Scaffold(
-          body: HomePage(),
+          body: SplashScreen(),
           //body: SplashScreen(),
         ));
   }

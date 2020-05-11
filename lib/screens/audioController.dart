@@ -7,7 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class audioController {
-
   List mp3dir = List(11);
 
   AudioPlayer player = AudioPlayer();
@@ -58,6 +57,5 @@ class audioController {
 //
 //  void audioPlay(var i) => player.play('$i.mp3');
 //
-
 
 }

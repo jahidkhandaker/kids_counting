@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'audioController.dart';
 
 class CountingObject extends StatefulWidget {
@@ -125,6 +124,10 @@ class CountingObjectState extends State<CountingObject> {
         icon: Image.asset('assets/images/btn-repeat.png'),
         iconSize: 50,
         onPressed: () {
+          ac.player.stop();
+          setState(() {
+            appleNo = 1;
+          });
           allPlay(1);
         },
       ),
@@ -132,13 +135,13 @@ class CountingObjectState extends State<CountingObject> {
   }
 
   allPlay(var i) {
-    ac.player.play(ac.mp3dir[i]);
+    ac.player.play(ac.mp3dir[i++]);
     ac.player.onPlayerCompletion.listen((event) {
       if (i < 10) {
-        ac.player.play(ac.mp3dir[++i]);
         setState(() {
           appleNo = i;
         });
+        ac.player.play(ac.mp3dir[i++]);
       } else
         ac.player.stop();
     });

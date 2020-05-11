@@ -3,8 +3,6 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class audioController {
   List mp3dir = List(11);
@@ -34,28 +32,9 @@ class audioController {
 
   void audioPlay(var i) => player.play(mp3dir[i]);
 
-//  allPlay(var i) {
-//    player.play(mp3dir[i]);
-//    player.onPlayerCompletion.listen((event) {
-//      if (i < 10) {
-//        player.play(mp3dir[++i]);
-//        return i;
-//      } else
-//        player.stop();
-//    });
-//  }
+  void audioStop() => player.stop();
 
-//
-//  AudioCache player = AudioCache(prefix: 'audio/');
-//
-//  AudioPlayer audioPlayer = AudioPlayer();
-//
-//  audioController(){
-//    player.loadAll(['1.mp3', '2.mp3', '3.mp3', '4.mp3', '5.mp3', '6.mp3', '7.mp3', '8.mp3', '9.mp3', '10.mp3']);
-//
-//  }
-//
-//  void audioPlay(var i) => player.play('$i.mp3');
-//
+  void mute() => player.setVolume(0.0);
+
 
 }

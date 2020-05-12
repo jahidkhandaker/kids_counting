@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kidscounting/screens/ButtonController.dart';
 import 'CountingObject.dart';
 import 'CountingPage.dart';
 
@@ -71,7 +70,7 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     });
 //                    Navigator.push(context,
 //                        MaterialPageRoute(builder: (context) {
-//                      return ButtonController();
+//                      return null;
 //                    }));
                   },
                 ),

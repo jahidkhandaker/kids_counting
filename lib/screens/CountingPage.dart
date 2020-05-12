@@ -15,11 +15,8 @@ class CountingPageState extends State<CountingPage>
   audioController ac = audioController();
 
 
-  AnimationController _breathingController;
   AnimationController _pulseController;
   Animation<double> _pulseAnimation;
-  AnimationController _rotationController;
-  Animation<double> _rotation;
 
   var _breathe = 0.0;
 
@@ -39,16 +36,8 @@ class CountingPageState extends State<CountingPage>
       else if (status == AnimationStatus.dismissed)
         _pulseController.forward();
     });
+
     _pulseController.forward();
-
-    _rotationController =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 400));
-    _rotation =
-        Tween<double>(begin: 0.0, end: 0.2).animate(_rotationController);
-
-    _rotation.addStatusListener((status) {
-      if (status == AnimationStatus.completed) _rotationController.reverse();
-    });
 
 
   }
@@ -128,6 +117,17 @@ class CountingPageState extends State<CountingPage>
   }
 
   getButton(var n) {
+    AnimationController _rotatecontroller;
+
+    Tween<double> turnsTween = Tween<double>(
+      begin: 1,
+      end: 1.2,
+    );
+
+    _rotatecontroller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
 
     return Padding(
       padding: EdgeInsets.all(10),
@@ -140,10 +140,10 @@ class CountingPageState extends State<CountingPage>
             borderRadius: BorderRadius.circular(20),
             color: Colors.pinkAccent,
             child: RotationTransition(
-              turns: _rotation,
+              turns: turnsTween.animate(_rotatecontroller),
               child: GestureDetector(
                 onTap: () {
-                  _rotationController.forward();
+                  _rotatecontroller.forward().whenComplete(_rotatecontroller.reverse);
                   ac.audioPlay(n);
                 },
                 child: Image.asset('assets/images/number-$n.png'),

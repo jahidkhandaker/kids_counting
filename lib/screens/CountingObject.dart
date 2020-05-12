@@ -13,6 +13,7 @@ class CountingObject extends StatefulWidget {
 class CountingObjectState extends State<CountingObject> {
   var appleNo = 1;
   String soundBtn = 'btn-mute';
+  var loopColor = null;
   audioController ac = audioController();
 
   @override
@@ -119,17 +120,22 @@ class CountingObjectState extends State<CountingObject> {
   }
 
   getLoopButton() {
+
     return Padding(
       padding: EdgeInsets.only(bottom: 10),
-      child: IconButton(
-        icon: Image.asset('assets/images/btn-repeat.png'),
-        iconSize: 50,
-        onPressed: () {
-          setState(() {
-            appleNo = 1;
-          });
-          allPlay(1);
-        },
+      child: Container(
+        color: loopColor,
+        child: IconButton(
+          icon: Image.asset('assets/images/btn-repeat.png'),
+          iconSize: 50,
+          onPressed: () {
+            setState(() {
+              loopColor = Colors.white.withOpacity(0.3);
+              appleNo = 1;
+            });
+            allPlay(1);
+          },
+        ),
       ),
     );
   }
@@ -142,9 +148,14 @@ class CountingObjectState extends State<CountingObject> {
           appleNo = i;
         });
         ac.player.play(ac.mp3dir[i++]);
-      } else
+      } else{
         ac.audioStop();
+        setState(() {
+          loopColor = null;
+        });
+      }
     });
+
   }
 
   void route() {
